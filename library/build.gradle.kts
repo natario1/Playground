@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
-    id("kotlin-multiplatform")
     id("com.android.library")
+    id("kotlin-multiplatform")
 }
 
 android {
@@ -46,9 +46,7 @@ kotlin {
     }
     androidNative {
         binaries {
-            sharedLib("bugs", listOf(RELEASE)) {
-
-            }
+            sharedLib("bugs", listOf(RELEASE))
         }
     }
     sourceSets {
