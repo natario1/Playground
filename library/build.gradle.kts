@@ -46,7 +46,9 @@ kotlin {
     }
     androidNative {
         binaries {
-            sharedLib("bugs", listOf(RELEASE))
+            sharedLib("bugs", listOf(RELEASE)) {
+
+            }
         }
     }
     sourceSets {
@@ -54,6 +56,12 @@ kotlin {
             dependencies {
                 // Sample dependency
                 api("androidx.annotation:annotation:1.1.0")
+            }
+        }
+        getByName("commonMain") {
+            dependencies {
+                // Sample multiplatform dependency
+                api("com.otaliastudios.opengl:egloo-multiplatform:0.5.3")
             }
         }
     }
