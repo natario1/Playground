@@ -31,14 +31,17 @@ fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", c
 kotlin {
     androidNative {
         binaries {
-            sharedLib("bugs", listOf(RELEASE))
+            sharedLib("bugs-consumer", listOf(RELEASE))
         }
     }
     sourceSets {
         getByName("commonMain") {
             dependencies {
-                // Sample multiplatform dependency
-                api("com.otaliastudios.opengl:egloo-multiplatform:0.5.3")
+                api(project(":library"))
+                /* api("xxx:yyy:1.0") {
+                    isTransitive = true
+                    isChanging = true
+                } */
             }
         }
     }

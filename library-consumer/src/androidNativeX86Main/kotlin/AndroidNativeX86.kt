@@ -1,0 +1,1 @@
+fun androidNativeX86Consumer() = Unit

@@ -1,0 +1,1 @@
+fun androidNativeArm32Consumer() = Unit
