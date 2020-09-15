@@ -3,18 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
-    id("com.android.library")
     id("kotlin-multiplatform")
-}
-
-android {
-    setCompileSdkVersion(29)
-    defaultConfig {
-        setMinSdkVersion(21)
-        setTargetSdkVersion(29)
-    }
-    sourceSets["main"].java.srcDirs("src/androidJvmMain/kotlin")
-    sourceSets["main"].manifest.srcFile("src/androidJvmMain/AndroidManifest.xml")
 }
 
 fun KotlinMultiplatformExtension.newSourceSet(name: String, parent: KotlinSourceSet): KotlinSourceSet {
@@ -40,22 +29,12 @@ fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", c
 }
 
 kotlin {
-    android("androidJvm") {
-        // This enables the KMP android publication.
-        publishLibraryVariants("release")
-    }
     androidNative {
         binaries {
             sharedLib("bugs", listOf(RELEASE))
         }
     }
     sourceSets {
-        getByName("androidJvmMain") {
-            dependencies {
-                // Sample dependency
-                api("androidx.annotation:annotation:1.1.0")
-            }
-        }
         getByName("commonMain") {
             dependencies {
                 // Sample multiplatform dependency
