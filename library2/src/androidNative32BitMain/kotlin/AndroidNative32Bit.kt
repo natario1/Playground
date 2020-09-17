@@ -1,0 +1,1 @@
+fun androidNative32Bit2() = Unit

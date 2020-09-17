@@ -7,6 +7,10 @@ plugins {
     id("maven-publish")
 }
 
+repositories {
+    maven("../build/maven")
+}
+
 fun KotlinMultiplatformExtension.newSourceSet(name: String, parent: KotlinSourceSet): KotlinSourceSet {
     return sourceSets.maybeCreate(name).apply {
         dependsOn(parent)
@@ -32,20 +36,22 @@ fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", c
 kotlin {
     androidNative {
         binaries {
-            sharedLib("bugs", listOf(RELEASE))
+            sharedLib("bugs2", listOf(RELEASE))
         }
     }
     sourceSets {
         getByName("commonMain") {
             dependencies {
-                // Sample multiplatform dependency
-                api("com.otaliastudios.opengl:egloo-multiplatform:0.5.3")
+                api("bugs:library:1.0.0") {
+                    isTransitive = true
+                    isChanging = true
+                }
             }
         }
     }
 }
 
-group = "bugs"
+group = "bugs2"
 version = "1.0.0"
 publishing {
     // publish all: ./gradlew library2:publishAllPublicationsToMavenRepository
