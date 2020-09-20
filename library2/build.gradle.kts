@@ -31,7 +31,10 @@ fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", c
 kotlin {
     androidNative {
         binaries {
-            sharedLib("library", listOf(RELEASE))
+            sharedLib("library2", listOf(RELEASE))
         }
+    }
+    sourceSets["commonMain"].dependencies {
+        api(project(":library"))
     }
 }

@@ -1,0 +1,1 @@
+fun common_2() = Unit

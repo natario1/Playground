@@ -1,0 +1,1 @@
+fun androidNative_2() = Unit
