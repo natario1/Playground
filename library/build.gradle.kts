@@ -12,7 +12,7 @@ fun KotlinMultiplatformExtension.newSourceSet(name: String, parent: KotlinSource
     }
 }
 
-fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", configure: KotlinNativeTarget.() -> Unit) {
+fun KotlinMultiplatformExtension.androidNativeOld(name: String = "androidNative", configure: KotlinNativeTarget.() -> Unit) {
     val androidNativeMain = newSourceSet("${name}Main", sourceSets["commonMain"])
     val androidNative32BitMain = newSourceSet("${name}32BitMain", androidNativeMain)
     val androidNative64BitMain = newSourceSet("${name}64BitMain", androidNativeMain)
@@ -24,6 +24,15 @@ fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", c
     }
     targets64.forEach {
         newSourceSet(it.compilations["main"].defaultSourceSet.name, androidNative64BitMain)
+        it.configure()
+    }
+}
+
+fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", configure: KotlinNativeTarget.() -> Unit) {
+    val androidNativeMain = newSourceSet("${name}Main", sourceSets["commonMain"])
+    val targets = listOf(androidNativeX86(), androidNativeArm32(), androidNativeX64(), androidNativeArm64())
+    targets.forEach {
+        newSourceSet(it.compilations["main"].defaultSourceSet.name, androidNativeMain)
         it.configure()
     }
 }
