@@ -1,2 +1,2 @@
 enableFeaturePreview("GRADLE_METADATA")
-include ':library', ':library2', ':library3'
+include ':library', ':library2'

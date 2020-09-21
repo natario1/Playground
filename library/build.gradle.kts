@@ -34,4 +34,7 @@ kotlin {
             sharedLib("library", listOf(RELEASE))
         }
     }
+    sourceSets["commonMain"].dependencies {
+        api("com.otaliastudios.opengl:egloo-multiplatform:0.5.3")
+    }
 }
