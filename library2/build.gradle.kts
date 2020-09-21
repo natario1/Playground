@@ -38,3 +38,15 @@ kotlin {
         api(project(":library"))
     }
 }
+
+// Workaround for https://youtrack.jetbrains.com/issue/KT-41887
+// or the project won't even compile.
+afterEvaluate {
+    configurations.configureEach {
+        if (name == "metadataCompileClasspath") {
+            attributes {
+                attribute(Usage.USAGE_ATTRIBUTE, project.objects.named("kotlin-metadata"))
+            }
+        }
+    }
+}

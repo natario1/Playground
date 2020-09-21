@@ -31,10 +31,23 @@ fun KotlinMultiplatformExtension.androidNative(name: String = "androidNative", c
 kotlin {
     androidNative {
         binaries {
-            sharedLib("library2", listOf(RELEASE))
+            sharedLib("library3", listOf(RELEASE))
         }
     }
     sourceSets["commonMain"].dependencies {
         api(project(":library2"))
+    }
+}
+
+
+// Workaround for https://youtrack.jetbrains.com/issue/KT-41887 
+// or the project won't even compile.
+afterEvaluate {
+    configurations.configureEach {
+        if (name == "metadataCompileClasspath") {
+            attributes {
+                attribute(Usage.USAGE_ATTRIBUTE, project.objects.named("kotlin-metadata"))
+            }
+        }
     }
 }
