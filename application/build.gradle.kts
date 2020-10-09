@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
-    id("com.android.library")
+    id("com.android.application")
     id("kotlin-android")
 }
 
@@ -13,4 +13,8 @@ android {
         setMinSdkVersion(21)
         setTargetSdkVersion(29)
     }
+}
+
+dependencies {
+    api(project(":library"))
 }

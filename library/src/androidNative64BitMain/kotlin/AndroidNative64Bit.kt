@@ -1,1 +1,0 @@
-fun androidNative64Bit() = Unit
