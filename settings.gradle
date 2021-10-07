@@ -1,2 +1,1 @@
-enableFeaturePreview("GRADLE_METADATA")
-include ':library', ':application'
+include ':executable-kn', ':executable-cpp'
