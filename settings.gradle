@@ -1,1 +1,1 @@
-include ':executable-kn', ':executable-cpp'
+include ':static-kn'

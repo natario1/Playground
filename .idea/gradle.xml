@@ -11,8 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/executable-cpp" />
-            <option value="$PROJECT_DIR$/executable-kn" />
+            <option value="$PROJECT_DIR$/static-kn" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
