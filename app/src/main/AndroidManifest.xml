@@ -3,7 +3,8 @@
     <application>
         <activity
             android:name="playground.PlaygroundActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="screenSize|screenLayout|smallestScreenSize|orientation|fontScale|keyboard|keyboardHidden|layoutDirection|locale|navigation|colorMode|uiMode|density|touchscreen|mcc|mnc">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
