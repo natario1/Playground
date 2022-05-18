@@ -1,1 +1,1 @@
-fun common() = Unit
+fun common() = "Hello, world!"
